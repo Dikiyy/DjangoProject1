@@ -1,8 +1,12 @@
-from django.urls import path
-from . import views
+
+from django.contrib import admin
+from django.urls import path, include
+from events.views import send_email_api
+
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('events.urls')),
+    path('sendemail/', send_email_api),
 
-    path('', views.home, name="home"),
-    path('add_event', views.add_event, name ='add-event')
 ]
